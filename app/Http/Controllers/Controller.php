@@ -10,4 +10,8 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    public const SUCCESS_MESSAGE = "success";
+    public const FAILED_MESSAGE = "failed";
+    public const SYSTEM_ERROR_MESSAGE = "Something Went Wrong! Please Contact Developer.";
 }
