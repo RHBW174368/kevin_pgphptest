@@ -53,6 +53,37 @@ class UserCommentsController extends Controller
             $_POST['password'] = self::APP_PASSWORD;
         }
 
+        /* Check Each Input Variable if Present */
+        foreach($this->input_variables as $key){
+            if(DataValidationHelper::missing_post($key) or !$key)
+            {
+                $this->message = 'Missing key/value for "'. $key . '"';
+                return response()->json([
+                    'message' => $this->message, 
+                    'message_status' => parent::FAILED_MESSAGE
+                ], 422);
+            }
+        }
+
+        /* Validate ID and Password */
+        if(strtoupper($_POST['password']) != self::APP_PASSWORD)
+        {
+            $this->message = 'Invalid password';
+            return response()->json([
+                'message' => $this->message, 
+                'message_status' => parent::FAILED_MESSAGE
+            ], 401);
+        }
+
+        if(!is_numeric($_POST['id']))
+        {   
+            $this->message = 'Invalid id';
+            return response()->json([
+                'message' => $this->message, 
+                'message_status' => parent::FAILED_MESSAGE
+            ], 422);
+        }
+
         
     }
 }
