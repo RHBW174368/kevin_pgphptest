@@ -34,6 +34,25 @@ class UserCommentsController extends Controller
 
     public function update(Request $request, $id)
     {
+        /* Check If $_POST Content or $_POST from CLI */
+        if($request->headers->get('Content-Type') == "application/json")
+        {
+            $json = $request->getContent();
+            if(!DataValidationHelper::is_json($json))
+            {
+                $this->message = 'Invalid POST JSON';
+                return response()->json([
+                    'message' => $this->message, 
+                    'message_status' => parent::FAILED_MESSAGE
+                ], 422);
+            }
+            $_POST = json_decode($json, true);
+        }elseif(app()->runningInConsole()){
+            $_POST['id'] = $request->input('id');
+            $_POST['comments'] = $request->input('comments');
+            $_POST['password'] = self::APP_PASSWORD;
+        }
+
         
     }
 }
