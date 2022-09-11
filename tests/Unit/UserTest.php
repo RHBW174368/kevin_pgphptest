@@ -3,16 +3,16 @@
 namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
+use App\Models\User;
+use App\Http\Controllers\Helpers\DataValidationHelper;
 
 class UserTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    public $id = 1;
+
+    public function test_user_id_is_integer()
     {
-        $this->assertTrue(true);
+        $id = is_integer($this->id);
+        $this->assertTrue($id);
     }
 }
