@@ -25,21 +25,21 @@
 11. GET Method
     url: http://localhost:<your port>/api/users_comments/1 (Change ID for Testing)
     
-12. POST Method (Form-Data)
-    url: http://localhost:<your port>/api/users_comments/
-    Request Body
-        form-data:
-            id => 1
-            password => 720DF6C2482218518FA20FDC52D4DED7ECC043AB
-            comments => "POST_Form_Comment"
+12. POST Method (Form-Data) <br>
+    url: http://localhost:<your port>/api/users_comments/ <br>
+    Request Body <br>
+        form-data: <br>
+            id => 1 <br>
+            password => 720DF6C2482218518FA20FDC52D4DED7ECC043AB <br>
+            comments => "POST_Form_Comment" <br>
         
-13. POST Method (Raw JSON)
-    url: http://localhost:<your port>/api/users_comments
-    Request Body
-        content-type: application/json
-        raw: {"id":"1","password":"720DF6C2482218518FA20FDC52D4DED7ECC043AB","comments":"POST_JSONComment"}
+13. POST Method (Raw JSON) <br>
+    url: http://localhost:<your port>/api/users_comments <br>
+    Request Body <br>
+        content-type: application/json <br>
+        raw: {"id":"1","password":"720DF6C2482218518FA20FDC52D4DED7ECC043AB","comments":"POST_JSONComment"} <br>
     
-14. POST Method (CLI Command)
-    php artisan update_user:comment <id> <comments> <password optional>
-    php artisan update_user:comment 1 POST_CLIComment
+14. POST Method (CLI Command) <br>
+    php artisan update_user:comment <id> <comments> <password optional> <br>
+    php artisan update_user:comment 1 POST_CLIComment <br>
 
