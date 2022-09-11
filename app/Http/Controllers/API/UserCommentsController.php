@@ -84,6 +84,20 @@ class UserCommentsController extends Controller
             ], 422);
         }
 
-        
+        /* Update User Comments */
+        if($error = User::append_user_comments($_POST['id'], $_POST['comments']))
+        {   
+            $error_message = $error->getData()->message;
+            $this->message = 'Could not update database: ' . $error_message;
+            return response()->json([
+                'message' => $this->message, 
+                'message_status' => parent::FAILED_MESSAGE
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => "OK", 
+            'message_status' => parent::SUCCESS_MESSAGE
+        ], 200);
     }
 }
