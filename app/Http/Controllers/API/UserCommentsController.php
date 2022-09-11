@@ -4,6 +4,8 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Http\Controllers\Helpers\DataValidationHelper;
 
 class UserCommentsController extends Controller
 {
@@ -11,7 +13,7 @@ class UserCommentsController extends Controller
     public $response = [];
     public $input_variables = ['password', 'id', 'comments'];
     private const APP_PASSWORD = '720DF6C2482218518FA20FDC52D4DED7ECC043AB';
-    
+
     public function show($id)
     {
         if(!is_numeric($id))
@@ -32,7 +34,7 @@ class UserCommentsController extends Controller
         return view("view",compact("user"));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         /* Check If $_POST Content or $_POST from CLI */
         if($request->headers->get('Content-Type') == "application/json")
