@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\UserCommentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('users_comments/{id}', [UserCommentsController::class, 'show'])->name('user_comments.show');
+Route::post('users_comments', [UserCommentsController::class, 'update'])->name('user_comments.update');
